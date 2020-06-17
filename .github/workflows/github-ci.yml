@@ -9,9 +9,6 @@ on:
   pull_request:
     types:
       - opened
-  release:
-    types:
-      - created
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -74,7 +71,3 @@ jobs:
             ~/core/build
             ~/gateway/build
             ~/.gradle
-      - name: Deloy
-        run: gradle --stacktrace --info bintrayUpload
-        if: $GITHUB_EVENT_NAME == "release"
-
