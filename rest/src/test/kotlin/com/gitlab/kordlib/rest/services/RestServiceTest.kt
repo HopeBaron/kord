@@ -9,6 +9,7 @@ import com.gitlab.kordlib.rest.service.RestClient
 import io.ktor.client.HttpClient
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.*
+import org.junit.jupiter.api.condition.EnabledIfEnvironmentVariable
 import java.awt.Color
 import java.util.*
 
@@ -22,6 +23,7 @@ fun image(path: String): String {
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation::class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@EnabledIfEnvironmentVariable(named = "TARGET_BRANCH", matches = "master")
 class RestServiceTest {
 
     private val publicGuildId = Snowflake(322850917248663552)
