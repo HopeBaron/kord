@@ -12,6 +12,9 @@ jobs:
     runs-on: ubuntu-latest
     env:
       KORD_TEST_TOKEN: ${{ secrets.KORD_TEST_TOKEN }}
+      RELEASE_TAG: ${{GITHUB_REF/refs\/tags\//}}
+      GRADLE_OPTS: "-Dorg.gradle.daemon=false"
+
     steps:
       - uses: actions/checkout@v2
       - name: Set up JDK 1.14

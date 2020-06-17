@@ -20,6 +20,7 @@ jobs:
       GRADLE_OPTS: "-Dorg.gradle.daemon=false"
       TARGET_BRANCH: ${{ github.event.pull_request.base.ref }}
       KORD_TEST_TOKEN: ${{ secrets.KORD_TEST_TOKEN }}
+      RELEASE_TAG: ${{GITHUB_REF/refs\/tags\//}}
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
