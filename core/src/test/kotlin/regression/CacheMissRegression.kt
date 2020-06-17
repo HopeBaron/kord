@@ -105,7 +105,7 @@ class CacheMissingRegressions {
     @BeforeTest
     fun setup() {
         runBlocking {
-            kord = Kord(System.getenv("token")) {
+            kord = Kord(System.getenv("KORD_TEST_TOKEN")) {
                 gateways { _, shards -> shards.map { FakeGateway } }
                 requestHandler { CrashingHandler(it.httpClient) }
             }

@@ -18,7 +18,7 @@ class StrategyTest {
 
     @BeforeAll
     fun setup() = runBlocking {
-        kord = Kord(System.getenv("token"))
+        kord = Kord(System.getenv("KORD_TEST_TOKEN"))
     }
 
     @Test
