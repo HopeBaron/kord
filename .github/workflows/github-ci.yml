@@ -21,12 +21,13 @@ jobs:
       GRADLE_OPTS: "-Dorg.gradle.daemon=false"
       TARGET_BRANCH: ${{ github.event.pull_request.base.ref }}
       KORD_TEST_TOKEN: ${{ secrets.KORD_TEST_TOKEN }}
-      RELEASE_TAG: ${{ github.event.release.tag_name }}
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
 
       - run: export GRADLE_USER_HOME=`pwd`/.gradle
+      - run: echo ::set-output name=RELEASE_TAG::${GITHUB_REF/refs\/tags\//}
+
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
