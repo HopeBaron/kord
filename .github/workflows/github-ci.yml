@@ -19,6 +19,7 @@ jobs:
     env:
       GRADLE_OPTS: "-Dorg.gradle.daemon=false"
       TARGET_BRANCH: ${{ github.event.pull_request.base.ref }}
+      KORD_TEST_TOKEN: ${{ secrets.KORD_TEST_TOKEN }}
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -46,7 +47,9 @@ jobs:
             ~/common/build
             ~/core/build
             ~/gateway/build
-            ~/.gradle        # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+            ~/.gradle
+
+          # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
 
       - name: Gradle (Testing)
         run: gradle --stacktrace --info check
